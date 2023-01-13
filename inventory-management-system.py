@@ -230,3 +230,31 @@ def billing():
         
     else:
         print("wrong input")
+
+        
+# **************** MAIN PROGRAM ********************* #
+
+while True:
+    
+    print('''
+    1. Inventory
+    2. Billing ''')
+    
+    ch=int(input("\nEnter your Choice -- "))
+
+    if ch==1 :
+        stock()
+
+    elif ch==2:
+        billing()
+
+    else:
+        print("\nPlease Enter a Valid Input")
+        
+    aa=input("\n\nDo you want to Continue ? (y/n) - ")
+
+    if aa=='n':
+        print("\nEXITING PROGRAM ...")
+        break 
+
+# ********************************************** #
