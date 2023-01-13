@@ -201,3 +201,32 @@ def stock():
     else:
         print("\nPlease Enter a Valid Input")
 
+
+# **************** Billing Function ********************* #
+
+def billing():
+    
+    print("*** BILLING ***")
+        
+    print ('''
+        1. Add record
+        2. Delete record
+        3. Display records
+        4. Exiting''')
+                
+                
+    choice=int (input ("Enter your choice: "))
+    if choice == 1:
+            adddata()
+            
+    elif choice== 2:
+        deldata()
+                
+    elif choice== 3:
+        fetchdata()
+                
+    elif choice == 4:
+        print ("Exiting")
+        
+    else:
+        print("wrong input")
