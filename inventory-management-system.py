@@ -147,3 +147,27 @@ def adddata():
             mydb.commit()
              
         print("Records Added")
+
+#Function for Deleting Records
+def deldata():
+        name=input("Enter Name of Customer : ")
+        no=int(input("Enter the phone number of the buyer:"))
+        cur.execute("delete from `{}` where cno  ={}".Format (name,no))
+        mydb.commit()
+        print("Record deleted")
+
+#Function for Displaying Records
+def fetchdata():
+        na=input("Enter Name of Buyer : ")
+        no=int(input("Enter the phone number of the person:"))
+        cur.execute("Show Tables")
+        myrecords=cur.fetchall()
+        i=0
+        x=myrecords
+        if x!=None:
+            cur.execute("Select * from {}".format(na))
+            abc=cur.fetchall()
+            print(abc)
+            
+        else:
+            print("Table doesn't Exists!!")
