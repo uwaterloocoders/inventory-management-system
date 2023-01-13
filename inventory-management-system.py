@@ -38,3 +38,54 @@ def additem():
         abc=input("\nDo you want to Add more Records ? (y/n) - ")
         if abc=='n':
             break
+
+# Function for Updating Records
+def updateitem():
+
+    print("\nContents in table SHOP")
+    a=cur.execute("select * from Shop")
+    cur.execute(a)
+    print(tabulate(cur, headers =['ItemNo', 'ItemName', 'Quantity', 'Price'],tablefmt='psql'))
+
+    try:
+        print("\nUPDATING RECORDS ...")
+        print('''\nWhat do you want to Update ? - 
+        1. Item Name
+        2. Quantity of an Item
+        3. Price of an Item''')
+
+
+        while True:
+            
+            ch=int(input("\nEnter your Choice - "))
+            if ch==1:
+                print("\nUPDATING ITEM NAME...")
+                itemno=int(input("\nEnter Item Number - "))
+                itemnm=input("Enter Updated Item Name - ")
+                cur.execute("update shop set itemname = '{}'where itemno = {}".format(itemnm, itemno))
+                mydb.commit()
+                print("\nRecord Updated Successfully !!!")
+            
+            
+            elif ch==2:
+                print("\nUPDATING QUANTITY...")
+                itemno=int(input("\nEnter Item Number - "))
+                qty=int(input("Enter Updated Quantity - "))
+                cur.execute("update shop set Quantity = {} where itemno = {}".format(qty,itemno))
+                mydb.commit()
+                print("\nRecord Updated Successfully !!!")
+
+            elif ch==3:
+                print("\nUPDATING PRICE...")
+                itemno=int(input("\nEnter Item Number - "))
+                pr=int(input("Enter Updated Price - "))
+                cur.execute("update shop set Price = {} where itemno = {}".format(pr,itemno))
+                mydb.commit()
+                print("\nRecord Updated Successfully !!!")
+                
+            else:
+                print("Please Enter a Valid Input")
+                break
+
+    except:
+        print("Enter Valid Input")
