@@ -171,3 +171,33 @@ def fetchdata():
             
         else:
             print("Table doesn't Exists!!")
+
+# ********* STOCK FUNCTION ********* #
+
+def stock():
+    
+    print("\n*** INVENTORY MANAGEMENT ***")
+
+    print('''
+    1.ADD
+    2.UPDATE
+    3.DELETE
+    4.SHOW INVENTORY''')
+            
+    ch=int(input("\nEnter your Choice -- "))
+
+    if ch==1 :
+        additem()
+
+    elif ch==2:
+        updateitem()
+
+    elif ch==3:
+        delitem()
+        
+    elif ch==4:
+        inventory()
+
+    else:
+        print("\nPlease Enter a Valid Input")
+
