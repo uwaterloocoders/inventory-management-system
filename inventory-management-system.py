@@ -89,3 +89,27 @@ def updateitem():
 
     except:
         print("Enter Valid Input")
+
+        
+# Function for Deleting Records
+def delitem():
+    
+    while True:
+
+        print("\nContents in table SHOP")
+        a=cur.execute("select * from Shop")
+        cur.execute(a)
+        print(tabulate(cur, headers = ['ItemNo', 'ItemName', 'Quantity','Price'],tablefmt='psql'))
+
+
+        ch=input("\nDo you want to continue to delete a Record ? (y/n) - ")
+        
+        if ch == 'y':
+            itemno=int(input("\nEnter Item Number - "))
+            cur.execute("delete from shop where itemno = {} " .format(itemno))
+            mydb.commit()
+            print("\nRecord Deleted Successfully !!!")
+        
+        else:
+            print("Thanks!!!")
+            break
