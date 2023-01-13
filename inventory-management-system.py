@@ -113,3 +113,12 @@ def delitem():
         else:
             print("Thanks!!!")
             break
+
+
+#Function to Display Inventory
+def inventory():
+    print('\n')
+    print("Inventory :-\n")
+    a=cur.execute("select * from Shop")
+    cur.execute(a)
+    print(tabulate(cur, headers = ['ItemNo', 'ItemName', 'Quantity', 'Price'], tablefmt='psql'))
