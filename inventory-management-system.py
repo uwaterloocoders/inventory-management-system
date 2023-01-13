@@ -122,3 +122,28 @@ def inventory():
     a=cur.execute("select * from Shop")
     cur.execute(a)
     print(tabulate(cur, headers = ['ItemNo', 'ItemName', 'Quantity', 'Price'], tablefmt='psql'))
+
+    
+# ***** FUNCTIONS FOR BILLING ***** #
+# Function for Adding Records
+def adddata():
+    
+        name=input("Enter the name of the buyer:")
+        no=int(input("Enter the phone number of the buyer:"))
+        y=int(input("Enter number of products:"))
+        cur.execute("create table {}(cname varchar (25), cno integer, item varchar(25), itpr integer, itqty integer) ". format(name))
+        i=0
+        while(i<y):
+            na=input("Enter the name of the item:")
+            pr=int(input("Enter the price of the item:"))
+            quan=int(input("Enter the quantity of the item:"))
+            cur.execute("insert into `{}` values ( '{}', {}, '{}',{},{})".format(name,name,no,na,pr,quan))
+        
+            i=i+1
+            cur.execute("Select Quantity from shop where ItemName='{}'".format(na))
+            myrecords=cur.fetchall()
+            x=myrecords[0][0]
+            cur.execute("update shop set Quantity = {} where itemName = '{}'".format(x-1,na))
+            mydb.commit()
+             
+        print("Records Added")
