@@ -22,9 +22,9 @@ for i in cur:
 def additem():
     while True:
         print("\nContents in table SHOP")
-        a=cur.execute("select * from Shop")
-        cur.execute(a)
-        print(tabulate(cur, headers =['ItemNo', 'ItemName', 'Quantity','Price'],tablefmt='psql'))
+        cur.execute("select * from Shop")
+        a = cur.fetchall()
+        print(tabulate(a, headers =['ItemNo', 'ItemName', 'Quantity','Price'],tablefmt='psql'))
     
         print("\nADDING RECORDS ...")
         itno=int(input("\nEnter Item Number - "))
@@ -43,9 +43,9 @@ def additem():
 def updateitem():
 
     print("\nContents in table SHOP")
-    a=cur.execute("select * from Shop")
-    cur.execute(a)
-    print(tabulate(cur, headers =['ItemNo', 'ItemName', 'Quantity', 'Price'],tablefmt='psql'))
+    cur.execute("select * from Shop")
+    a = cur.fetchall()
+    print(tabulate(a, headers =['ItemNo', 'ItemName', 'Quantity', 'Price'],tablefmt='psql'))
 
     try:
         print("\nUPDATING RECORDS ...")
@@ -97,9 +97,9 @@ def delitem():
     while True:
 
         print("\nContents in table SHOP")
-        a=cur.execute("select * from Shop")
-        cur.execute(a)
-        print(tabulate(cur, headers = ['ItemNo', 'ItemName', 'Quantity','Price'],tablefmt='psql'))
+        cur.execute("select * from Shop")
+        a = cur.fetchall()
+        print(tabulate(a, headers = ['ItemNo', 'ItemName', 'Quantity','Price'],tablefmt='psql'))
 
 
         ch=input("\nDo you want to continue to delete a Record ? (y/n) - ")
@@ -119,9 +119,9 @@ def delitem():
 def inventory():
     print('\n')
     print("Inventory :-\n")
-    a=cur.execute("select * from Shop")
-    cur.execute(a)
-    print(tabulate(cur, headers = ['ItemNo', 'ItemName', 'Quantity', 'Price'], tablefmt='psql'))
+    cur.execute("select * from Shop")
+    a = cur.fetchall()
+    print(tabulate(a, headers = ['ItemNo', 'ItemName', 'Quantity', 'Price'], tablefmt='psql'))
 
     
 # ***** FUNCTIONS FOR BILLING ***** #
